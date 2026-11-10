@@ -1,0 +1,252 @@
+{% extends "base.html" %} {% block title %}Image Detection | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- Header -->
+
+<section class="bg-primary text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+
+            Image DeepFake Detection
+
+        </h1>
+
+        <p class="lead">
+
+            Upload an image to check whether it is Real or AI Generated.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Upload Section -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-5">
+
+                        <form action="{{ url_for('image_detection') }}" method="POST" enctype="multipart/form-data">
+
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+
+Select Image
+
+</label>
+
+                                <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png" required>
+
+                                <div class="form-text">
+
+                                    Supported Formats: JPG, JPEG, PNG
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <img id="preview-image" src="" class="preview-media img-fluid rounded border" style="max-height:350px; width:100%; object-fit:contain; display:none;" alt="Preview">
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button type="submit" class="btn btn-primary btn-lg">
+
+<i class="bi bi-search"></i>
+
+Analyze Image
+
+</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+
+            Image Analysis Features
+
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-image text-primary display-4"></i>
+
+                        <h5 class="mt-3">
+
+                            Image Upload
+
+                        </h5>
+
+                        <p>
+
+                            Upload any image from your computer.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-cpu text-success display-4"></i>
+
+                        <h5 class="mt-3">
+
+                            AI Analysis
+
+                        </h5>
+
+                        <p>
+
+                            Our Deep Learning model analyzes image patterns.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-bar-chart-fill text-danger display-4"></i>
+
+                        <h5 class="mt-3">
+
+                            Prediction
+
+                        </h5>
+
+                        <p>
+
+                            Receive a prediction and uncalibrated model score.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Instructions -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card border-0 shadow">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4>
+
+                    Instructions
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Upload only clear face images.</li>
+
+                    <li>Supported formats are JPG, JPEG and PNG.</li>
+
+                    <li>Maximum file size should be 10 MB.</li>
+
+                    <li>Wait a few seconds while the AI analyzes the image.</li>
+
+                    <li>The result will display the prediction and uncalibrated model score.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- JavaScript Preview -->
+
+<script>
+    const imageInput = document.querySelector('input[name="image"]');
+
+    const preview = document.getElementById('preview-image');
+
+    imageInput.addEventListener('change', function() {
+
+        const file = this.files[0];
+
+        if (file) {
+
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+
+        }
+
+    });
+</script>
+
+{% endblock %}

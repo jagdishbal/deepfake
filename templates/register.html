@@ -1,0 +1,165 @@
+{% extends "base.html" %} {% block title %}Register | DeepFake Analysis{% endblock %} {% block content %}
+
+<section class="py-5 bg-light min-vh-100 d-flex align-items-center">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-7 col-md-9">
+
+                <div class="card shadow-lg border-0 rounded-4">
+
+                    <div class="card-body p-5">
+
+                        <div class="text-center mb-4">
+
+                            <i class="bi bi-person-plus-fill display-3 text-success"></i>
+
+                            <h2 class="fw-bold mt-3">
+                                Create Your Account
+                            </h2>
+
+                            <p class="text-muted">
+                                Register to use the DeepFake Analysis System
+                            </p>
+
+                        </div>
+
+                        <form action="{{ url_for('register') }}" method="POST">
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text" name="fullname" class="form-control" placeholder="Enter your full name" required>
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Username
+                                    </label>
+
+                                    <input type="text" name="username" class="form-control" placeholder="Choose a username" required>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Password
+                                    </label>
+
+                                    <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Confirm Password
+                                    </label>
+
+                                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" required>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Mobile Number
+                                </label>
+
+                                <input type="tel" name="mobile" class="form-control" placeholder="Enter your mobile number" required>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    College / Institution
+                                </label>
+
+                                <input type="text" name="college" class="form-control" placeholder="Enter your college name">
+
+                            </div>
+
+                            <div class="form-check mb-4">
+
+                                <input class="form-check-input" type="checkbox" id="terms" required>
+
+                                <label class="form-check-label" for="terms">
+
+                                    I agree to the Terms and Conditions
+
+                                </label>
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button type="submit" class="btn btn-success btn-lg">
+
+                                    <i class="bi bi-person-check-fill"></i>
+
+                                    Create Account
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <p class="mb-0">
+
+                                Already have an account?
+
+                                <a href="{{ url_for('login') }}" class="text-decoration-none fw-semibold">
+
+                                    Login Here
+
+                                </a>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

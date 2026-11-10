@@ -1,0 +1,32 @@
+# Image Model Comprehensive Evaluation & Comparison Report
+
+## 1. Primary Benchmark: Untouched Independent Test Set (N=231)
+- Ground Truth: 129 Fake (Video Manipulation) / 102 Real
+
+| Metric | Original Model | New Model V2 | Change |
+| :--- | :---: | :---: | :---: |
+| Decision Threshold | 0.59 | 0.52 | -0.07 |
+| Accuracy | 72.29% | 82.68% | +10.39% |
+| ROC-AUC Score | 0.8010 | 0.9299 | +0.1288 |
+| Loss (Binary Crossentropy) | 0.5751 | 0.3545 | -0.2206 |
+| Real Images Correct (TP) | 68 / 102 (66.7%) | 76 / 102 (74.5%) | +8 |
+| Real Misclassified as Fake (FN) | 34 / 102 (33.3%) | 26 / 102 (25.5%) | -8 (Reduced!) |
+| Fake Images Correct (TN) | 99 / 129 (76.7%) | 115 / 129 (89.1%) | +16 |
+| Fake Misclassified as Real (FP) | 30 / 129 (23.3%) | 14 / 129 (10.9%) | -16 |
+| False Positive Rate (Fake -> Real) | 23.26% | 10.85% | -12.40% |
+| False Negative Rate (Real -> Fake) | 33.33% | 25.49% | -7.84% |
+
+### Confusion Matrices:
+- **Original Model Confusion Matrix:** `[[99, 30], [34, 68]]`
+- **New Model V2 Confusion Matrix:** `[[115, 14], [26, 76]]`
+
+## 2. AI-Generated Synthetic Media Benchmark: CIFAKE Test Split (N=180)
+- Ground Truth: 90 AI-Generated (Stable Diffusion) / 90 Authentic Photos
+
+| Metric | Original Model | New Model V2 | Improvement |
+| :--- | :---: | :---: | :---: |
+| Accuracy | 50.00% | 78.33% | +28.33% |
+| ROC-AUC Score | 0.4616 | 0.8820 | +0.4204 |
+| AI-Generated Correctly Detected | 62 / 90 (68.9%) | 55 / 90 (61.1%) | -7 |
+| AI-Generated Misclassified as Real | 28 / 90 (31.1%) | 35 / 90 (38.9%) | +7 |
+

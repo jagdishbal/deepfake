@@ -1,0 +1,40 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+.vscode/
+.pytest_cache/
+*.log
+uploads/
+cache/
+runtime/
+logs/
+temp/
+tmp/
+*.bak
+*.bak_*
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Large downloaded datasets
+dataset/downloads/*.zip
+
+# Large datasets - keep locally, do not upload
+dataset/
+
+# Trained model weights - keep locally
+models/saved_models/
+models/backups/
+*.h5
+*.keras
+*.pt
+*.pth
+*.onnx
+
+# Local credentials
+config.py
+
+# Backup images
+*.orig

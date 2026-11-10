@@ -1,0 +1,295 @@
+{% extends "base.html" %} {% block title %}Contact Us | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= CONTACT HEADER ================= -->
+
+<section class="bg-primary text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="display-5 fw-bold">
+            Contact Us
+        </h1>
+
+        <p class="lead">
+            We'd love to hear from you. Feel free to contact us for any queries or suggestions.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Contact Form -->
+
+            <div class="col-lg-7">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-header bg-dark text-white">
+
+                        <h4>
+
+                            Send a Message
+
+                        </h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <form action="{{ url_for('contact') }}" method="POST">
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+Full Name
+
+</label>
+
+                                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+Email Address
+
+</label>
+
+                                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+Subject
+
+</label>
+
+                                <input type="text" name="subject" class="form-control" placeholder="Enter subject" required>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+Message
+
+</label>
+
+                                <textarea name="message" rows="6" class="form-control" placeholder="Write your message..." required></textarea>
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button type="submit" class="btn btn-primary btn-lg">
+
+<i class="bi bi-send-fill"></i>
+
+Send Message
+
+</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Contact Information -->
+
+            <div class="col-lg-5">
+
+                <div class="card shadow border-0 mb-4">
+
+                    <div class="card-header bg-success text-white">
+
+                        <h4>
+
+                            Contact Information
+
+                        </h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            <i class="bi bi-geo-alt-fill text-danger"></i>
+
+                            <strong>Address</strong>
+
+                            <br> Department of Artificial Intelligence & Machine Learning
+
+                            <br> GIET University
+
+                        </p>
+
+                        <hr>
+
+                        <p>
+
+                            <i class="bi bi-envelope-fill text-primary"></i>
+
+                            <strong>Email</strong>
+
+                            <br> jagdish@gmail.com
+
+                        </p>
+
+                        <hr>
+
+                        <p>
+
+                            <i class="bi bi-telephone-fill text-success"></i>
+
+                            <strong>Phone</strong>
+
+                            <br> +91 8976546757
+
+                        </p>
+
+                        <hr>
+
+                        <p>
+
+                            <i class="bi bi-clock-fill text-warning"></i>
+
+                            <strong>Working Hours</strong>
+
+                            <br> Monday - Friday
+
+                            <br> 9:00 AM - 5:00 PM
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Quick Links -->
+
+                <div class="card shadow border-0">
+
+                    <div class="card-header bg-info text-white">
+
+                        <h4>
+
+                            Quick Links
+
+                        </h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="d-grid gap-2">
+
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">
+
+Dashboard
+
+</a>
+
+                            <a href="{{ url_for('image_detection') }}" class="btn btn-outline-success">
+
+Image Detection
+
+</a>
+
+                            <a href="{{ url_for('video_detection') }}" class="btn btn-outline-warning">
+
+Video Detection
+
+</a>
+
+                            <a href="{{ url_for('audio_detection') }}" class="btn btn-outline-danger">
+
+Audio Detection
+
+</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= GOOGLE MAP PLACEHOLDER ================= -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4>
+
+                    Location
+
+                </h4>
+
+            </div>
+
+            <div class="card-body p-0">
+
+                <div class="text-center bg-light py-5">
+
+                    <i class="bi bi-geo-alt-fill display-1 text-danger"></i>
+
+                    <h4 class="mt-3">
+
+                        Google Maps Location
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        You can integrate the Google Maps API here to display your college or project location.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

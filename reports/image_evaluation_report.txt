@@ -1,0 +1,22 @@
+EVALUATION REPORT: IMAGE
+========================================
+Loss: 0.5750
+Accuracy at threshold 0.59: 0.7229
+ROC-AUC Score: 0.8013
+
+False Positive Rate (Fake -> Real): 0.2326
+False Negative Rate (Real -> Fake): 0.3333
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        fake       0.74      0.77      0.76       129
+        real       0.69      0.67      0.68       102
+
+    accuracy                           0.72       231
+   macro avg       0.72      0.72      0.72       231
+weighted avg       0.72      0.72      0.72       231
+
+Confusion Matrix:
+[[99 30]
+ [34 68]]

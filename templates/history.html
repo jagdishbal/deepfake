@@ -1,0 +1,293 @@
+{% extends "base.html" %} {% block title %}Detection History | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= HEADER ================= -->
+
+<section class="bg-secondary text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+
+            Detection History
+
+        </h1>
+
+        <p class="lead">
+
+            View all your previous image, video, and audio detection records.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= HISTORY TABLE ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+
+                <h4 class="mb-0">
+
+                    Detection Records
+
+                </h4>
+
+                <div class="d-flex gap-2">
+
+                    <a href="{{ url_for('export_csv') }}" class="btn btn-success btn-sm">
+
+                        <i class="bi bi-download"></i> Export Report to CSV
+
+                    </a>
+
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-sm">
+
+                        <i class="bi bi-arrow-left"></i> Dashboard
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card-body">
+
+                {% if history %}
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped table-hover align-middle">
+
+                        <thead class="table-dark">
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Date & Time</th>
+
+                                <th>File Type</th>
+
+                                <th>File Name</th>
+
+                                <th>Prediction</th>
+
+                                <th>Stored model score</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for item in history %}
+
+                            <tr>
+
+                                <td>
+
+                                    {{ item.id }}
+
+                                </td>
+
+                                <td>
+
+                                    {{ item.date }}
+
+                                </td>
+
+                                <td>
+
+                                    {{ item.file_type }}
+
+                                </td>
+
+                                <td class="table-filename" title="{{ item.file_name }}">
+
+                                    {{ item.file_name }}
+
+                                </td>
+
+                                <td>
+
+                                    {% if item.prediction == "Real" %}
+
+                                    <span class="badge bg-success">
+
+Real
+
+</span> {% else %}
+
+                                    <span class="badge bg-danger">
+
+DeepFake
+
+</span> {% endif %}
+
+                                </td>
+
+                                <td>
+
+                                    <div class="progress" style="height:22px;">
+
+                                        <div class="progress-bar bg-primary" style="width: {{ '%.2f'|format(item.confidence) }}%;">
+
+                                            {{ '%.2f'|format(item.confidence) }}%
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <a href="{{ url_for('view_result', id=item.id) }}" class="btn btn-primary btn-sm">
+
+                                        <i class="bi bi-eye-fill"></i> View
+
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                {% else %}
+
+                <div class="text-center py-5">
+
+                    <i class="bi bi-clock-history display-1 text-muted"></i>
+
+                    <h3 class="mt-3">
+
+                        No History Available
+
+                    </h3>
+
+                    <p class="text-muted">
+
+                        You haven't analyzed any files yet.
+
+                    </p>
+
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary mt-3">
+
+Go to Dashboard
+
+</a>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SUMMARY ================= -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3 mb-md-0">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <h2 class="text-primary">
+
+                            {{ total_images }}
+
+                        </h2>
+
+                        <p>
+
+                            Images Analyzed
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <h2 class="text-success">
+
+                            {{ total_videos }}
+
+                        </h2>
+
+                        <p>
+
+                            Videos Analyzed
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <h2 class="text-danger">
+
+                            {{ total_audio }}
+
+                        </h2>
+
+                        <p>
+
+                            Audio Files Analyzed
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Terms of Use & Consent | DeepFake Analysis{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="mb-0">Pre-Login Consent Agreement</h3>
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Please read and agree to the following terms before using the {{ service | capitalize }} Detection service:</h5>
+                    
+                    <div class="alert alert-info bg-light border-0">
+                        <ul class="mb-0 text-muted">
+                            <li class="mb-2"><strong>Data Usage:</strong> You consent that any {{ service }} uploaded will be analyzed strictly for deepfake detection purposes by our AI models.</li>
+                            <li class="mb-2"><strong>Data Privacy:</strong> Uploaded media is temporarily stored on our servers for processing and will not be shared with third parties.</li>
+                            <li class="mb-2"><strong>Disclaimer:</strong> The prediction provided by this application is AI-generated and should not be used as definitive legal or forensic evidence.</li>
+                            <li><strong>Responsibility:</strong> You affirm that you have the right to upload and process this media. Do not upload sensitive or illegal content.</li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-2 mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary px-4">Decline & Return</a>
+                        <a href="{{ url_for('login') }}" class="btn btn-primary px-5">I Agree</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

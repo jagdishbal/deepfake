@@ -1,0 +1,29 @@
+{
+    "image": {
+        "threshold": 0.48,
+        "f1_score": 0.8496,
+        "accuracy": 0.8498,
+        "roc_auc": 0.8987,
+        "uncertainty_lower": 0.42,
+        "uncertainty_upper": 0.54,
+        "checkpoint": "models/saved_models/image/best_model_v2.h5"
+    },
+    "video": {
+        "threshold": 0.4,
+        "f1_score": 0.8478260869565217,
+        "accuracy": 0.825,
+        "roc_auc": 0.8881249999999999,
+        "uncertainty_lower": 0.32,
+        "uncertainty_upper": 0.48,
+        "checkpoint": "models/saved_models/video/best_model_v2.h5"
+    },
+    "audio": {
+        "threshold": 0.3,
+        "f1_score": 0.9324324324324325,
+        "accuracy": 0.9333333333333333,
+        "roc_auc": 0.9756444444444445,
+        "uncertainty_lower": 0.22,
+        "uncertainty_upper": 0.38,
+        "checkpoint": "models/saved_models/audio/best_model_v2.h5"
+    }
+}

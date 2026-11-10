@@ -1,0 +1,255 @@
+{% extends "base.html" %} {% block title %}Video Detection | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- Header -->
+
+<section class="bg-success text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+            Video DeepFake Detection
+        </h1>
+
+        <p class="lead">
+            Upload a video and let our AI model detect whether it is Real or DeepFake.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Upload Section -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-5">
+
+                        <form action="{{ url_for('video_detection') }}" method="POST" enctype="multipart/form-data">
+
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+
+Select Video
+
+</label>
+
+                                <input type="file" name="video" class="form-control" accept=".mp4,.avi,.mov,.mkv" required>
+
+                                <div class="form-text">
+
+                                    Supported Formats: MP4, AVI, MOV, MKV
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <video id="video-preview" class="w-100 rounded border" controls style="display:none; max-height:400px;">
+
+<source src="" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button type="submit" class="btn btn-success btn-lg">
+
+<i class="bi bi-camera-video-fill"></i>
+
+Analyze Video
+
+</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+
+            Video Analysis Features
+
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-upload display-4 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Upload Video
+
+                        </h5>
+
+                        <p>
+
+                            Upload any supported video file from your device.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-cpu-fill display-4 text-primary"></i>
+
+                        <h5 class="mt-3">
+
+                            AI Frame Analysis
+
+                        </h5>
+
+                        <p>
+
+                            The model extracts video frames and analyzes them for manipulation.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-graph-up-arrow display-4 text-danger"></i>
+
+                        <h5 class="mt-3">
+
+                            Prediction Report
+
+                        </h5>
+
+                        <p>
+
+                            Get the prediction result along with its uncalibrated model score.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Instructions -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4>
+
+                    Instructions
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Upload only one video at a time.</li>
+
+                    <li>Supported formats: MP4, AVI, MOV, MKV.</li>
+
+                    <li>Maximum upload size: 100 MB.</li>
+
+                    <li>The AI model extracts frames before prediction.</li>
+
+                    <li>Processing may take a few seconds depending on the video length.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Video Preview -->
+
+<script>
+    const videoInput = document.querySelector('input[name="video"]');
+
+    const videoPreview = document.getElementById("video-preview");
+
+    videoInput.addEventListener("change", function() {
+
+        const file = this.files[0];
+
+        if (file) {
+
+            videoPreview.src = URL.createObjectURL(file);
+
+            videoPreview.style.display = "block";
+
+        }
+
+    });
+</script>
+
+{% endblock %}

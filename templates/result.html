@@ -1,0 +1,278 @@
+{% extends "base.html" %} {% block title %}Detection Result | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= RESULT HEADER ================= -->
+
+<section class="bg-dark text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+
+            Detection Result
+
+        </h1>
+
+        <p class="lead">
+
+            AI Analysis Report
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULT CARD ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow-lg border-0">
+
+                    <div class="card-body p-5">
+
+                        <div class="text-center mb-4">
+
+                            {% if is_inconclusive %}
+
+                            <i class="bi bi-question-diamond-fill display-1 text-warning"></i>
+
+                            <h2 class="text-warning mt-3">
+
+                                Inconclusive / Low Confidence
+
+                            </h2>
+
+                            <p class="text-muted">
+
+                                The model score is near the decision threshold or lacks certainty.
+
+                            </p>
+
+                            {% elif prediction == "Real" %}
+
+                            <i class="bi bi-patch-check-fill display-1 text-success"></i>
+
+                            <h2 class="text-success mt-3">
+
+                                Content is Real
+
+                            </h2>
+
+                            {% else %}
+
+                            <i class="bi bi-exclamation-triangle-fill display-1 text-danger"></i>
+
+                            <h2 class="text-danger mt-3">
+
+                                DeepFake Detected
+
+                            </h2>
+
+                            {% endif %}
+
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <h5>
+
+                                    File Name
+
+                                </h5>
+
+                                <p>
+
+                                    {{ filename }}
+
+                                </p>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <h5>
+
+                                    Detection Type
+
+                                </h5>
+
+                                <p>
+
+                                    {{ file_type }}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <h5>
+
+                                    Prediction
+
+                                </h5>
+
+                                {% if is_inconclusive %}
+
+                                <span class="badge bg-warning text-dark fs-6">
+
+                                    INCONCLUSIVE / LOW CONFIDENCE
+
+                                </span>
+
+                                <span class="badge bg-secondary fs-6 ms-1">
+
+                                    ({{ prediction }})
+
+                                </span>
+
+                                {% elif prediction == "Real" %}
+
+                                <span class="badge bg-success fs-6">
+
+Real
+
+</span> {% else %}
+
+                                <span class="badge bg-danger fs-6">
+
+Fake
+
+</span> {% endif %}
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <h5>
+
+                                    Uncalibrated model score
+
+                                </h5>
+
+                                <div class="progress" style="height:25px;">
+
+                                    <div class="progress-bar {% if is_inconclusive %}bg-warning text-dark{% else %}bg-primary{% endif %}" role="progressbar" style="width: {{ '%.2f'|format(confidence) }}%;">
+
+                                        {{ '%.2f'|format(confidence) }}%
+
+                                    </div>
+
+                                </div>
+
+                                {% if dual_probabilities %}
+
+                                <div class="mt-2 text-muted small fw-bold">
+
+                                    Probability Breakdown: <span class="badge bg-secondary">{{ dual_probabilities }}</span>
+
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h5>
+
+                            AI Analysis Summary
+
+                        </h5>
+
+                        <p>
+
+                            {{ analysis }}
+
+                        </p>
+                        <p class="small text-muted">
+                            This score is not a calibrated probability that the media is authentic.
+                        </p>
+
+                        {% if file_type == "Video" %}
+                        <div class="alert alert-warning" role="alert">
+                            This video model was trained to detect face-manipulation deepfakes. It has not been
+                            validated to identify fully AI-generated, animated, or CGI videos. For those videos,
+                            this result may be unreliable; “Real” does not verify that a video is authentic.
+                        </div>
+                        {% endif %}
+
+                        {% if preview_file %}
+
+                        <hr>
+
+                        <h5 class="mb-3">
+
+                            Uploaded File
+
+                        </h5>
+
+                        {% if file_type == "Image" %}
+
+                        <img src="{{ url_for('uploaded_file', filename=preview_file) }}" class="preview-media img-fluid rounded shadow"> {% elif file_type == "Video" %}
+
+                        <video class="preview-media w-100 rounded shadow" controls>
+
+<source
+src="{{ url_for('uploaded_file', filename=preview_file) }}">
+
+</video> {% elif file_type == "Audio" %}
+
+                        <audio class="w-100" controls>
+
+<source
+src="{{ url_for('uploaded_file', filename=preview_file) }}">
+
+</audio> {% endif %} {% endif %}
+
+                        <div class="row mt-4 g-2">
+
+                            <div class="col-sm-6">
+
+                                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary w-100">
+
+                                    <i class="bi bi-speedometer2"></i> Dashboard
+
+                                </a>
+
+                            </div>
+
+                            <div class="col-sm-6">
+
+                                <a href="{{ url_for('history') }}" class="btn btn-primary w-100">
+
+                                    <i class="bi bi-clock-history"></i> View History
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</section>
+
+{% endblock %}

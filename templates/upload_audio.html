@@ -1,0 +1,259 @@
+{% extends "base.html" %} {% block title %}Audio Detection | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= HEADER ================= -->
+
+<section class="bg-danger text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+
+            Audio DeepFake Detection
+
+        </h1>
+
+        <p class="lead">
+
+            Upload a voice recording or audio file to detect whether it is Real or AI Generated.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= AUDIO UPLOAD ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-5">
+
+                        <form action="{{ url_for('audio_detection') }}" method="POST" enctype="multipart/form-data">
+
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+
+Select Audio File
+
+</label>
+
+                                <input type="file" name="audio" class="form-control" accept=".wav,.mp3,.mp4,.aac,.m4a,.flac,audio/*,video/mp4" required>
+
+                                <div class="form-text">
+
+                                    Supported Formats: WAV, MP3, MP4, AAC, M4A, FLAC
+
+                                </div>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <audio id="audio-preview" class="w-100" controls style="display:none;">
+
+<source src="">
+
+Your browser does not support the audio element.
+
+</audio>
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button type="submit" class="btn btn-danger btn-lg">
+
+<i class="bi bi-mic-fill"></i>
+
+Analyze Audio
+
+</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+
+            Audio Detection Features
+
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-upload display-4 text-primary"></i>
+
+                        <h5 class="mt-3">
+
+                            Upload Audio
+
+                        </h5>
+
+                        <p>
+
+                            Upload recorded messages or voice samples.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-cpu-fill display-4 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            AI Voice Analysis
+
+                        </h5>
+
+                        <p>
+
+                            The AI model analyzes voice characteristics and detects spoofed audio.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-graph-up-arrow display-4 text-danger"></i>
+
+                        <h5 class="mt-3">
+
+                            Prediction Result
+
+                        </h5>
+
+                        <p>
+
+                            View the prediction with its uncalibrated model score.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= INSTRUCTIONS ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4>
+
+                    Instructions
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Upload one audio file at a time.</li>
+
+                    <li>Supported formats: WAV, MP3, MP4, AAC, and M4A.</li>
+
+                    <li>Maximum file size: 50 MB.</li>
+
+                    <li>Clear recordings produce more reliable results.</li>
+
+                    <li>Wait while the AI processes and analyzes the audio.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= AUDIO PREVIEW ================= -->
+
+<script>
+    const audioInput = document.querySelector('input[name="audio"]');
+
+    const audioPreview = document.getElementById("audio-preview");
+
+    audioInput.addEventListener("change", function() {
+
+        const file = this.files[0];
+
+        if (file) {
+
+            audioPreview.src = URL.createObjectURL(file);
+
+            audioPreview.style.display = "block";
+
+        }
+
+    });
+</script>
+
+{% endblock %}

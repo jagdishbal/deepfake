@@ -1,0 +1,14 @@
+metric,value
+total_images,0
+total_videos,0
+total_audio,0
+real_images,0
+fake_images,0
+real_videos,0
+fake_videos,0
+real_audio,0
+fake_audio,0
+train_count,0
+validation_count,0
+test_count,0
+skipped_files,0

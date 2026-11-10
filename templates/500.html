@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}500 - Internal Server Error | DeepFake Analysis{% endblock %} {% block content %}
+
+<section class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8 text-center">
+
+                <i class="bi bi-x-octagon-fill text-danger display-1"></i>
+
+                <h1 class="display-1 fw-bold text-dark mt-3">500</h1>
+
+                <h3 class="fw-semibold">Internal Server Error</h3>
+
+                <p class="text-muted mt-3">
+                    Something went wrong on the server while processing your request. Please try again after a few moments.
+                </p>
+
+                <div class="mt-4">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg me-2">
+                        <i class="bi bi-house-fill"></i> Home
+                    </a>
+
+                    <a href="javascript:location.reload();" class="btn btn-outline-danger btn-lg">
+                        <i class="bi bi-arrow-clockwise"></i> Try Again
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

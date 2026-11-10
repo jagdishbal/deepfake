@@ -1,0 +1,549 @@
+{% extends "base.html" %} {% block title %}About | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="bg-dark text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="display-5 fw-bold">
+
+            About DeepFake Analysis
+
+        </h1>
+
+        <p class="lead">
+
+            AI-Based DeepFake Detection System using Deep Learning
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= PROJECT OVERVIEW ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid rounded shadow" alt="About Project">
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <h2>
+
+                    Project Overview
+
+                </h2>
+
+                <p class="text-muted">
+
+                    DeepFake Analysis is a web-based Artificial Intelligence application developed to detect manipulated digital content such as images, videos, and audio recordings. The system uses Deep Learning models trained on real and fake datasets to identify whether
+                    uploaded media is authentic or AI-generated.
+
+                </p>
+
+                <p class="text-muted">
+
+                    This project is developed as an AIML major project using Flask, TensorFlow, OpenCV, Librosa, and MySQL.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= OBJECTIVES ================= -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2>
+
+                Project Objectives
+
+            </h2>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-image display-3 text-primary"></i>
+
+                        <h4>
+
+                            Image Detection
+
+                        </h4>
+
+                        <p>
+
+                            Detect AI-generated and manipulated facial images.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-camera-video display-3 text-success"></i>
+
+                        <h4>
+
+                            Video Detection
+
+                        </h4>
+
+                        <p>
+
+                            Analyze video frames to identify DeepFake videos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-mic-fill display-3 text-danger"></i>
+
+                        <h4>
+
+                            Audio Detection
+
+                        </h4>
+
+                        <p>
+
+                            Detect AI-generated voice recordings and fake speech.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TECHNOLOGY STACK ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2>
+
+                Technology Stack
+
+            </h2>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+
+                        <strong>Frontend :</strong> HTML5, CSS3, Bootstrap 5, JavaScript
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <strong>Backend :</strong> Flask (Python)
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <strong>Database :</strong> MySQL
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <strong>Image Processing :</strong> OpenCV
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <strong>Audio Processing :</strong> Librosa
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <strong>Deep Learning :</strong> TensorFlow / Keras
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+
+                        Python
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        NumPy
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        Pandas
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        Matplotlib
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        Scikit-learn
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        Bootstrap Icons
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= WORKFLOW ================= -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2>
+
+                Project Workflow
+
+            </h2>
+
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <h1 class="text-primary">
+
+                    1
+
+                </h1>
+
+                <h5>
+
+                    Upload File
+
+                </h5>
+
+                <p>
+
+                    Upload an image, video, or audio file.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1 class="text-success">
+
+                    2
+
+                </h1>
+
+                <h5>
+
+                    AI Processing
+
+                </h5>
+
+                <p>
+
+                    The trained model analyzes the uploaded file.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1 class="text-warning">
+
+                    3
+
+                </h1>
+
+                <h5>
+
+                    Prediction
+
+                </h5>
+
+                <p>
+
+                    The system predicts whether the file is Real or DeepFake.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1 class="text-danger">
+
+                    4
+
+                </h1>
+
+                <h5>
+
+                    Result
+
+                </h5>
+
+                <p>
+
+                    The prediction and uncalibrated model score are displayed.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2>
+
+                Key Features
+
+            </h2>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Image DeepFake Detection</li>
+
+                            <li>Video DeepFake Detection</li>
+
+                            <li>Audio DeepFake Detection</li>
+
+                            <li>Real-Time Prediction</li>
+
+                            <li>Uncalibrated Model Score</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>User Authentication</li>
+
+                            <li>Prediction History</li>
+
+                            <li>Profile Management</li>
+
+                            <li>Secure File Upload</li>
+
+                            <li>Responsive Design</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Flask Backend</li>
+
+                            <li>MySQL Database</li>
+
+                            <li>TensorFlow Model</li>
+
+                            <li>OpenCV Processing</li>
+
+                            <li>Bootstrap Interface</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEAM SECTION ================= -->
+<section class="team-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Project Team</h2>
+            <p class="text-muted">Meet the creators behind Deepfake Analysis</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='images/member1.jpg') }}" alt="Team Member 1">
+                <h4 class="mt-3">Project Partner</h4>
+            </div>
+            <div class="team-card lead-card">
+                <img src="{{ url_for('static', filename='images/member3.jpg') }}" alt="Project Lead">
+                <h4 class="mt-3">Project Lead</h4>
+            </div>
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='images/member2.jpg') }}" alt="Team Member 3">
+                <h4 class="mt-3">Project Partner</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER MESSAGE ================= -->
+
+<section class="bg-primary text-white py-5">
+
+    <div class="container text-center">
+
+        <h2>
+
+            DeepFake Analysis
+
+        </h2>
+
+        <p>
+
+            An AI-powered solution for detecting manipulated digital media using modern Deep Learning techniques.
+
+        </p>
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-light">
+
+Go to Dashboard
+
+</a>
+
+    </div>
+
+</section>
+
+{% endblock %}

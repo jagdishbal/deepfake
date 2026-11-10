@@ -1,0 +1,389 @@
+{% extends "base.html" %} {% block title %}Admin Dashboard | DeepFake Analysis{% endblock %} {% block content %}
+
+<!-- ================= ADMIN HEADER ================= -->
+
+<section class="bg-dark text-white py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-8">
+
+                <h1 class="fw-bold">
+                    Admin Dashboard
+                </h1>
+
+                <p class="lead mb-0">
+                    Welcome, {{ session.get('admin_name') }}. Manage users, datasets, predictions, and system reports.
+                </p>
+
+            </div>
+
+            <div class="col-md-4 text-md-end">
+
+                <a href="{{ url_for('logout') }}" class="btn btn-danger">
+
+                    <i class="bi bi-box-arrow-right"></i> Logout
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SUMMARY CARDS ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-people-fill display-4 text-primary"></i>
+
+                        <h2 class="mt-3">
+
+                            {{ total_users }}
+
+                        </h2>
+
+                        <p>
+
+                            Registered Users
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-folder-fill display-4 text-success"></i>
+
+                        <h2 class="mt-3">
+
+                            {{ total_predictions }}
+
+                        </h2>
+
+                        <p>
+
+                            Total Predictions
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-cpu-fill display-4 text-danger"></i>
+
+                        <h2 class="mt-3">
+
+                            {{ model_accuracy }}%
+
+                        </h2>
+
+                        <p>
+
+                            Model Accuracy
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-database-fill display-4 text-warning"></i>
+
+                        <h2 class="mt-3">
+
+                            {{ dataset_size }}
+
+                        </h2>
+
+                        <p>
+
+                            Dataset Files
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MANAGEMENT CARDS ================= -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-people display-4 text-primary"></i>
+
+                        <h5 class="mt-3">
+
+                            Manage Users
+
+                        </h5>
+
+                        <p>
+
+                            View, edit, or remove registered users.
+
+                        </p>
+
+                        <a href="{{ url_for('users') }}" class="btn btn-primary">
+
+Open
+
+</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-folder2-open display-4 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Datasets
+
+                        </h5>
+
+                        <p>
+
+                            Manage training datasets used by the AI model.
+
+                        </p>
+
+                        <a href="{{ url_for('datasets') }}" class="btn btn-success">
+
+Open
+
+</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-cpu display-4 text-danger"></i>
+
+                        <h5 class="mt-3">
+
+                            AI Models
+
+                        </h5>
+
+                        <p>
+
+                            View model status and retrain if necessary.
+
+                        </p>
+
+                        <a href="{{ url_for('models') }}" class="btn btn-danger">
+
+Open
+
+</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-file-earmark-bar-graph display-4 text-warning"></i>
+
+                        <h5 class="mt-3">
+
+                            Reports
+
+                        </h5>
+
+                        <p>
+
+                            View system analytics and prediction reports.
+
+                        </p>
+
+                        <a href="{{ url_for('reports') }}" class="btn btn-warning text-dark">
+
+Open
+
+</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RECENT USERS ================= -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4 class="mb-0">
+
+                    Recently Registered Users
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                {% if recent_users %}
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Name</th>
+
+                                <th>Email</th>
+
+                                <th>Joined</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for user in recent_users %}
+
+                            <tr>
+
+                                <td>{{ user.id }}</td>
+
+                                <td>{{ user.fullname }}</td>
+
+                                <td>{{ user.email }}</td>
+
+                                <td>{{ user.created_at }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                {% else %}
+
+                <div class="text-center py-4">
+
+                    <i class="bi bi-people display-4 text-muted"></i>
+
+                    <h5 class="mt-3">
+
+                        No Users Found
+
+                    </h5>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

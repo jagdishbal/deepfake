@@ -1,0 +1,22 @@
+{
+  "model_name": "Deepfake Detection Model V3 (Dual-Branch Spatial-Frequency)",
+  "model_checkpoint": "models/saved_models/image/best_model_v3.keras",
+  "optimal_threshold": 0.38,
+  "active_threshold": 0.38,
+  "metric_optimized": "F1_score_positive_fake",
+  "validation_metrics": {
+    "threshold": 0.38,
+    "tp": 452,
+    "tn": 458,
+    "fp": 17,
+    "fn": 23,
+    "accuracy": 0.9578947368421052,
+    "precision": 0.9637526652452025,
+    "recall": 0.9515789473684211,
+    "f1": 0.9576271186440678,
+    "fpr": 0.035789473684210524,
+    "fnr": 0.04842105263157895,
+    "auc": 0.9897883656509695
+  },
+  "calibration_timestamp": "2026-11-09 18:27:56"
+}
